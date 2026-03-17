@@ -143,3 +143,9 @@ git push -u origin main
 ## Example Artifact (Output)
 
 ![Word Cloud Example](docs/images/word_cloud_example.png)
+
+## Technical Modifications
+
+- I changed the data source from on machine txt file to a txt file from the web. This required me to import request module from urllib package.
+- I went with AI recommendation of Sherlock Holmes book from gutenberg.org and changed my input path.
+- I also added more stop words that sank my important words.
