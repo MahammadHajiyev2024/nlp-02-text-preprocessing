@@ -31,7 +31,8 @@ import logging
 from pathlib import Path
 import re
 import urllib.request
-
+import plotly.express as px
+import pandas as pd
 from datafun_toolkit.logger import get_logger, log_header, log_path
 import matplotlib.pyplot as plt
 import polars as pl
@@ -262,22 +263,30 @@ print("Top 20 most frequent cleaned tokens:")
 print(freq_df.head(20))
 
 # ============================================================
-# Section 10. Build a "Most Frequent Cleaned Tokens" Bar Chart
+# Section 10. Build a "Most Frequent Cleaned Tokens" Tree Map
 # ============================================================
 
-top_df: pl.DataFrame = freq_df.head(10)
+top_df_pandas = freq_df.head(10).to_pandas()
 
-plt.figure(figsize=(10, 5))
-plt.bar(top_df["token"], top_df["len"])
+fig = px.treemap(top_df_pandas, path = ["token"], values = "len", title = "Treemap: Most Frequent Tokens in Sherlock Holmes", color='len', color_continuous_scale=(["#FA9906", '#8B0000']))
+fig.update_traces(
+    textinfo="label+value",
+    textfont_size=24,
+    hovertemplate="<b>%{label}</b><br>Count: %{value}<extra></extra>"
+    )
+fig.show()
 
-ax = plt.gca()
-ax.tick_params(axis="x", labelrotation=45)
+# plt.figure(figsize=(10, 5))
+# plt.bar(top_df["token"], top_df["len"])
 
-plt.title("Most Frequent Cleaned Tokens")
-plt.xlabel("Token")
-plt.ylabel("Frequency")
-plt.tight_layout()
-plt.show()
+# ax = plt.gca()
+# ax.tick_params(axis="x", labelrotation=45)
+
+# plt.title("Most Frequent Cleaned Tokens")
+# plt.xlabel("Token")
+# plt.ylabel("Frequency")
+# plt.tight_layout()
+# plt.show()
 
 # ============================================================
 # Section 11. Compare Raw vs Clean Token Counts

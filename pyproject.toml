@@ -20,8 +20,12 @@ dependencies = [
     "lxml",            # WHY: Fast XML/HTML parser used by BeautifulSoup.
     "polars", # WHY: Fast Rust-based dataframe library for text statistics and tabular analysis.
     "matplotlib",      # WHY: Core visualization library for plots used in exploratory analysis.
-    "wordcloud",       # WHY: Quick visual exploration of word frequencies in text corpora.
+    "wordcloud",      # WHY: Quick visual exploration of word frequencies in text corpora.
+    "plotly",          # WHY: Interactive data visualization library.
+    "pandas",          # WHY: Data manipulation library used for tabular data analysis and visualization.
     #"spacy", # WHY: Industrial-strength NLP library for tokenization and linguistic analysis.
+    "pyarrow>=23.0.1",
+    "nbformat>=5.10.4",
 ]
 
 [project.optional-dependencies]
