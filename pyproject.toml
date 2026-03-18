@@ -26,6 +26,7 @@ dependencies = [
     #"spacy", # WHY: Industrial-strength NLP library for tokenization and linguistic analysis.
     "pyarrow>=23.0.1",
     "nbformat>=5.10.4",
+    "kaleido>=1.2.0",
 ]
 
 [project.optional-dependencies]
